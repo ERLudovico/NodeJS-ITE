@@ -5,6 +5,7 @@ module.exports = function(app){
     app.post('/AmilSBITEs/ite003/debug',       ite003.debug);
     app.post('/ite003/import',      ite003.import);
     app.post('/auth/oauth/v2/token',       ite003.token);
+    app.post('/AmilSBOauth2/Oauth',  ite003.token);
 
 
 }
