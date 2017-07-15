@@ -1,6 +1,6 @@
 var mongoose    =   require("mongoose");
-mongoose.connect('mongodb://sys:sys@ds157342.mlab.com:57342/erl');
-//mongoose.connect('mongodb://localhost:27017/demoDb');
+//mongoose.connect('mongodb://sys:sys@ds157342.mlab.com:57342/erl');
+mongoose.connect('mongodb://localhost:27017/demoDb');
 mongoose.set('debug', true);
 
 // create instance of Schema
@@ -12,4 +12,3 @@ var userSchema  = {
 };
 // create model if not exists.
 module.exports = mongoose.model('ite003',userSchema);
-

@@ -1,5 +1,7 @@
 var mongoose = require('mongoose'),
 ite003 = mongoose.model('ite003');
+var http = require("http");
+var url = require("url");
 
 
 exports.validaCPF = function(req, res){
@@ -74,8 +76,31 @@ exports.import = function(req, res){
 
 exports.debug = function(req, res){
 
-    console.log('Request ITE - 003 : ' + JSON.stringify(req.body));
+    console.log('****************** HEADER **********************************');
+    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(req.headers));
+    console.log('****************** PARAMS **********************************');
+    var parsedUrl = url.parse(req.url, true); // true to get query as object
+    var queryAsObject = parsedUrl.query;
+    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(queryAsObject));
+    console.log('****************** BODY **********************************');
+    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(req.body));
+    console.log('************************************************************');
 
+    return res.sendStatus(202);
+
+};
+
+exports.token = function(req, res){
+
+    console.log('****************** HEADER **********************************');
+    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(req.headers));
+    console.log('****************** PARAMS **********************************');
+    var parsedUrl = url.parse(req.url, true); // true to get query as object
+    var queryAsObject = parsedUrl.query;
+    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(queryAsObject));
+    console.log('****************** BODY **********************************');
+    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(req.body));
+    console.log('************************************************************');
 /*
     console.log(req.params[0]);
   	console.log(req.params[1]);
@@ -83,6 +108,18 @@ exports.debug = function(req, res){
   	console.log(req.params.nome);
   	return res.send(req.params.nome);
 */
-    return res.sendStatus(202);
+    /*
+    "access_token": "a61160b3-0ec9-4d7a-87c7-33d71bc99ccf",
+    3	"token_type": "Bearer",
+    4	"expires_in": 3600,
+    5	"scope": "oraclecommerce"
+    */
+    var response = {} ;
+    response.access_token = "a61160b3-0ec9-4d7a-87c7-33d71bc99ccf";
+    response.token_type = "Bearer" ;
+    response.expires_in = "3601";
+    response.scope = "oraclecommerce";
+    res.send(response);
+    //return res.sendStatus(202);
 
 };
