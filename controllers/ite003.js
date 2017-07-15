@@ -16,8 +16,17 @@ exports.validaCPF = function(req, res){
   };
 
   // Loga body
+  //console.log('************************************************************');
+  //console.log('Request ITE - 003 : ' + JSON.stringify(req.body));
+  console.log('****************** HEADER **********************************');
+  console.log('Request ITE - 003 (validaCPF): ' + JSON.stringify(req.headers));
+  console.log('****************** PARAMS **********************************');
+  var parsedUrl = url.parse(req.url, true); // true to get query as object
+  var queryAsObject = parsedUrl.query;
+  console.log('Request ITE - 003 (validaCPF): ' + JSON.stringify(queryAsObject));
+  console.log('****************** BODY **********************************');
+  console.log('Request ITE - 003 (validaCPF): ' + JSON.stringify(req.body));
   console.log('************************************************************');
-  console.log('Request ITE - 003 : ' + JSON.stringify(req.body));
 
   // Valido as entradas
   if(req.body.ite003Request.cep == undefined){
@@ -93,13 +102,13 @@ exports.debug = function(req, res){
 exports.token = function(req, res){
 
     console.log('****************** HEADER **********************************');
-    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(req.headers));
+    console.log('Request ITE - 003 (token): ' + JSON.stringify(req.headers));
     console.log('****************** PARAMS **********************************');
     var parsedUrl = url.parse(req.url, true); // true to get query as object
     var queryAsObject = parsedUrl.query;
-    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(queryAsObject));
+    console.log('Request ITE - 003 (token): ' + JSON.stringify(queryAsObject));
     console.log('****************** BODY **********************************');
-    console.log('Request ITE - 003 (DEBUG): ' + JSON.stringify(req.body));
+    console.log('Request ITE - 003 (token): ' + JSON.stringify(req.body));
     console.log('************************************************************');
 /*
     console.log(req.params[0]);
